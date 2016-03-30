@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="user1"
+            type="com.milesguan.androidstudy.entity.User" />
+
+        <variable
+            name="user2"
+            type="com.milesguan.androidstudy.entity.User" />
+
+        <variable
+            name="handlers"
+            type="com.milesguan.androidstudy.activity.DataBindingActivity" />
+
+        <import type="android.view.View" />
+        <import type="com.milesguan.androidstudy.entity.User" />
+        <import type="com.milesguan.androidstudy.entity.School" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="15dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{handlers.onClickChangeData}"
+            android:text="User1:change Data" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user1.name}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IsMe"
+            android:visibility="@{user1.isMe?View.VISIBLE:View.GONE}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{((School)(user1.school)).name}" />
+
+        <View
+            style="@style/line"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@{user2.name}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IsMe"
+            android:visibility="@{user2.isMe?View.VISIBLE:View.GONE}" />
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@{((School)(user2.school)).name}"/>-->
+
+    </LinearLayout>
+
+</layout>
