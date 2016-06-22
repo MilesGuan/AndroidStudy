@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".activity.DataBindingActivity" />
         <activity android:name=".activity.layoutTransitionActivity" />
+        <activity android:name=".activity.AutoMonitorActivity" />
     </application>
 
 </manifest>
