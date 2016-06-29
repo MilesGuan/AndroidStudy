@@ -21,6 +21,7 @@
         <activity android:name=".activity.DataBindingActivity" />
         <activity android:name=".activity.layoutTransitionActivity" />
         <activity android:name=".activity.AutoMonitorActivity" />
+        <activity android:name=".activity.AspectActivity" />
     </application>
 
 </manifest>
