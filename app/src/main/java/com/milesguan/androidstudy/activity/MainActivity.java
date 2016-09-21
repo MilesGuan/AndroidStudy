@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.hello).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(), AspectActivity.class));
+                startActivity(new Intent(getBaseContext(), RecyclerViewActivity.class));
             }
         });
     }

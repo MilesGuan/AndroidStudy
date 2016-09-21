@@ -75,8 +75,14 @@ public class layoutTransitionActivity extends Activity {
     }
 
     private void removeButtonView() {
-        if (parent.getChildCount() > 0)
-            parent.removeViewAt(0);
+//        if (parent.getChildCount() > 0)
+//            parent.removeViewAt(0);
+        parent.removeViewAt(2);
+        Button button = new Button(this);
+        button.setText("new");
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        parent.addView(button, 4, params);
     }
 
 
