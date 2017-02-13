@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.milesguan.androidstudy.R;
+import com.milesguan.androidstudy.coordinator.CoordinatorLayoutActivity;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,9 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Entry> initEntry() {
         List<Entry> entries = new LinkedList<>();
+        entries.add(new Entry(CoordinatorLayoutActivity.class , "CoordinatorLayout"));
         entries.add(new Entry(RxJavaActivity.class , "RxJava基本api"));
         entries.add(new Entry(DataBindingActivity.class , "DataBinding"));
         entries.add(new Entry(AspectActivity.class , "AspectJ面向切面编程"));
+        entries.add(new Entry(TestActivity.class , "TestActivity"));
         return entries;
     }
 

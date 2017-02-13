@@ -24,6 +24,8 @@
         <activity android:name=".activity.AspectActivity" />
         <activity android:name=".activity.RecyclerViewActivity" />
         <activity android:name=".activity.RxJavaActivity" />
+        <activity android:name=".activity.TestActivity" />
+        <activity android:name=".coordinator.CoordinatorLayoutActivity" />
     </application>
 
 </manifest>

@@ -6,12 +6,15 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.milesguan.androidstudy.R;
+import com.milesguan.androidstudy.entity.School;
+import com.milesguan.androidstudy.entity.Student;
 
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -28,7 +31,7 @@ public class RxJavaActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
         textView = (TextView) findViewById(R.id.textView);
-        init2();
+        init3();
     }
 
 
@@ -60,8 +63,6 @@ public class RxJavaActivity extends Activity {
                 Log.d(TAG, "Error!");
             }
         };
-
-
         Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
 
             @Override
@@ -72,12 +73,14 @@ public class RxJavaActivity extends Activity {
                 subscriber.onCompleted();
             }
         });
-
         observable.subscribe(observer);
     }
 
 
-    //多线程
+    /**
+     * 多线程
+     * 让事件在不同线程上执行
+     */
     private void init2() {
         Observable.create(new Observable.OnSubscribe<String>() {
             @Override
@@ -97,6 +100,50 @@ public class RxJavaActivity extends Activity {
                         Log.d(TAG, "number:" + number);
                     }
                 });
+    }
+
+    /**
+     * 变换 map
+     */
+    private void init3() {
+        Observable.from(School.getTestSchool())
+                .map(new Func1<School, String>() {
+                    @Override
+                    public String call(School school) {
+                        return school.getName();
+                    }
+                })
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String name) {
+                        Log.d(TAG, name);
+                    }
+                });
+    }
+
+    /**
+     * 变换flatMap
+     */
+    private void init4() {
+        Observable.from(School.getTestSchool())
+                .flatMap(new Func1<School, Observable<Student>>() {
+                    @Override
+                    public Observable<Student> call(School school) {
+                        return Observable.from(school.getStudents());
+                    }
+                }).map(new Func1<Student, String>() {
+            @Override
+            public String call(Student student) {
+                return student.getName();
+            }
+        }).subscribe(new Action1<String>() {
+            @Override
+            public void call(String s) {
+                Log.d(TAG, s);
+            }
+        });
+
+
     }
 
 
