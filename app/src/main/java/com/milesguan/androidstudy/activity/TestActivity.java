@@ -10,10 +10,14 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.milesguan.androidstudy.R;
+import com.milesguan.androidstudy.proto.AddressBookProtos;
+import com.milesguan.androidstudy.proto.ProtoDemo;
 
 /**
  * Created by renjieguan on 16/11/16.
@@ -49,6 +53,23 @@ public class TestActivity extends Activity {
                 0x00000000, 0x00000000});
         mDrawable.setShape(GradientDrawable.RECTANGLE);
         viewById.setBackground(mDrawable);
+
+
+        viewById.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                byte[] bytes = ProtoDemo.serializeTest();
+
+                try {
+                    AddressBookProtos.Person person = AddressBookProtos.Person.parseFrom(bytes);
+                    Log.i("grj", person.toString());
+
+                } catch (InvalidProtocolBufferException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
     }
 

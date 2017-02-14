@@ -31,7 +31,7 @@ public class RxJavaActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
         textView = (TextView) findViewById(R.id.textView);
-        init3();
+        init4();
     }
 
 
@@ -136,12 +136,13 @@ public class RxJavaActivity extends Activity {
             public String call(Student student) {
                 return student.getName();
             }
-        }).subscribe(new Action1<String>() {
-            @Override
-            public void call(String s) {
-                Log.d(TAG, s);
-            }
-        });
+        })
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        Log.d(TAG, s);
+                    }
+                });
 
 
     }

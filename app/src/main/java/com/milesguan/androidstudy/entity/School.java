@@ -44,7 +44,7 @@ public class School {
         students2.add(new Student("Eva"));
         students2.add(new Student("Peter"));
         School school2 = new School("b");
-        school1.setStudents(students2);
+        school2.setStudents(students2);
         schools.add(school2);
 
         return schools;
