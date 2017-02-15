@@ -23,7 +23,8 @@
         <activity android:name=".activity.AutoMonitorActivity" />
         <activity android:name=".activity.AspectActivity" />
         <activity android:name=".activity.RecyclerViewActivity" />
-        <activity android:name=".activity.RxJavaActivity" />
+        <activity android:name=".rxjava.RxJavaActivity" />
+        <activity android:name=".rxjava.RxBusActivity" />
         <activity android:name=".activity.TestActivity" />
         <activity android:name=".coordinator.CoordinatorLayoutActivity" />
     </application>

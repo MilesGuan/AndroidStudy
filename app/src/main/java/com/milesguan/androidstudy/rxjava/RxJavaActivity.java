@@ -1,9 +1,10 @@
-package com.milesguan.androidstudy.activity;
+package com.milesguan.androidstudy.rxjava;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.milesguan.androidstudy.R;
 import com.milesguan.androidstudy.entity.School;
@@ -31,7 +32,8 @@ public class RxJavaActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rx_java);
         textView = (TextView) findViewById(R.id.textView);
-        init4();
+        init5();
+
     }
 
 
@@ -145,6 +147,21 @@ public class RxJavaActivity extends Activity {
                 });
 
 
+    }
+
+
+    /**
+     * 用RxJava实现事件总线的测试
+     */
+    private void init5() {
+        RxBus.toObserverable().subscribe(new Action1<Object>() {
+            @Override
+            public void call(Object o) {
+                if (o instanceof TestEvent) {
+                    Toast.makeText(getApplicationContext(), "收到TestEvent" + ((TestEvent) o).getMsg(), Toast.LENGTH_SHORT);
+                }
+            }
+        });
     }
 
 
