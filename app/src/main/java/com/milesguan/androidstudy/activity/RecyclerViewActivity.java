@@ -21,7 +21,7 @@ import java.util.List;
 public class RecyclerViewActivity extends Activity{
 
     private List<String> mDatas;
-
+    MyAdapter myAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.i("grj" , "RecyclerViewActivity");
@@ -31,8 +31,15 @@ public class RecyclerViewActivity extends Activity{
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapter(this , mDatas));
 
+        myAdapter = new MyAdapter(this, mDatas);
+        recyclerView.setAdapter(myAdapter);
+        findViewById(R.id.title).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     protected void initData()
@@ -63,8 +70,11 @@ public class RecyclerViewActivity extends Activity{
 
         @Override
         public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
-            Log.i("grj" , "onBindViewHolder:" + position);
             holder.tv.setText(mDatas.get(position));
+
+            Object tag = holder.tv.getTag();
+            Log.i("grj" , "onBindViewHolder:" + position + "    "  + tag);
+            holder.tv.setTag(position);
         }
 
         @Override

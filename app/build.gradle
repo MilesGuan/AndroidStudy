@@ -3,6 +3,7 @@ import org.aspectj.bridge.MessageHandler
 import org.aspectj.tools.ajc.Main
 
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion 23
@@ -36,6 +37,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.aspectj:aspectjtools:1.8.1'
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
     }
 }
 
@@ -85,4 +87,6 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'
     compile 'com.google.protobuf:protobuf-java:3.2.0'
+    compile 'org.greenrobot:greendao:3.2.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }

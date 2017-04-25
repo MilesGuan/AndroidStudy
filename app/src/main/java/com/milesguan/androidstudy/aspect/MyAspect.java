@@ -37,7 +37,7 @@ public class MyAspect {
     //call类型
     @Before("call(* *..TextView.setText(..))")  //Pointcut可以直接写在这里
     public void log2(JoinPoint joinPoint) {
-        Log.i("aspect","log2:" +  joinPoint.toShortString());
+//        Log.i("aspect","log2:" +  joinPoint.toShortString());
     }
 
     //用AfterReturning获取call的返回值

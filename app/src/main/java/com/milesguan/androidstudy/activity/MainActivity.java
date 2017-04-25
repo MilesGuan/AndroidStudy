@@ -1,10 +1,12 @@
 package com.milesguan.androidstudy.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,6 +18,7 @@ import android.widget.ListView;
 
 import com.milesguan.androidstudy.R;
 import com.milesguan.androidstudy.coordinator.CoordinatorLayoutActivity;
+import com.milesguan.androidstudy.glide.GlideActivity;
 import com.milesguan.androidstudy.rxjava.RxBusActivity;
 import com.milesguan.androidstudy.rxjava.RxJavaActivity;
 
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         entries.add(new Entry(DataBindingActivity.class , "DataBinding"));
         entries.add(new Entry(AspectActivity.class , "AspectJ面向切面编程"));
         entries.add(new Entry(TestActivity.class , "TestActivity"));
+        entries.add(new Entry(RecyclerViewActivity.class , "RecyclerView"));
+        entries.add(new Entry(GlideActivity.class , "Glide"));
         return entries;
     }
 
@@ -64,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this , entries.get(position).activity));
             }
         });
+
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                100);
+
     }
 
     private static class Entry{
