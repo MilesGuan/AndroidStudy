@@ -19,6 +19,8 @@ import android.widget.ListView;
 import com.milesguan.androidstudy.R;
 import com.milesguan.androidstudy.coordinator.CoordinatorLayoutActivity;
 import com.milesguan.androidstudy.glide.GlideActivity;
+import com.milesguan.androidstudy.provider.ContentProviderActivity;
+import com.milesguan.androidstudy.reflect.ReflectActivity;
 import com.milesguan.androidstudy.rxjava.RxBusActivity;
 import com.milesguan.androidstudy.rxjava.RxJavaActivity;
 
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         entries.add(new Entry(TestActivity.class , "TestActivity"));
         entries.add(new Entry(RecyclerViewActivity.class , "RecyclerView"));
         entries.add(new Entry(GlideActivity.class , "Glide"));
+        entries.add(new Entry(ReflectActivity.class , "ReflectActivity"));
+        entries.add(new Entry(ContentProviderActivity.class , "ContentProvider"));
         return entries;
     }
 

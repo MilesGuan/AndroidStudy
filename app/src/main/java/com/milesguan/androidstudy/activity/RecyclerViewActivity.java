@@ -28,7 +28,7 @@ public class RecyclerViewActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
         initData();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -37,7 +37,8 @@ public class RecyclerViewActivity extends Activity{
         findViewById(R.id.title).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myAdapter.notifyDataSetChanged();
+//                myAdapter.notifyDataSetChanged();
+                recyclerView.scrollToPosition(20);
             }
         });
     }

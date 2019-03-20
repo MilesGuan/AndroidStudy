@@ -39,6 +39,13 @@
         <activity android:name=".activity.TestActivity"/>
         <activity android:name=".coordinator.CoordinatorLayoutActivity"/>
         <activity android:name=".glide.GlideActivity"/>
+        <activity android:name=".reflect.ReflectActivity"/>
+        <activity android:name=".provider.ContentProviderActivity"/>
+
+
+        <provider
+            android:name=".provider.TestProvider"
+            android:authorities="com.milesguan.androidstudy.provider.TestProvider" />
     </application>
 
 </manifest>

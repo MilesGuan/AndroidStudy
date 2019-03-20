@@ -1,9 +1,12 @@
 package com.milesguan.androidstudy.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.LinkedList;
 import java.util.List;
 
-public class School {
+public class School implements Parcelable {
 
     private String name;
 
@@ -51,5 +54,31 @@ public class School {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeTypedList(this.students);
+    }
+
+    protected School(Parcel in) {
+        this.name = in.readString();
+        this.students = in.createTypedArrayList(Student.CREATOR);
+    }
+
+    public static final Parcelable.Creator<School> CREATOR = new Parcelable.Creator<School>() {
+        @Override
+        public School createFromParcel(Parcel source) {
+            return new School(source);
+        }
+
+        @Override
+        public School[] newArray(int size) {
+            return new School[size];
+        }
+    };
 }
